@@ -37,11 +37,16 @@ Berikut adalah urutan *pipeline* yang digunakan beserta alasannya:
 | <img src="input/lena_noisy.png" width="300" alt="Lena Noisy"> | <img src="output/lena_restored.png" width="300" alt="Lena Restored"> |
 
 
+---
+
 ## 4. Analisis Singkat
 
-* **Apa yang Berhasil:** Kombinasi *Median* dan *Gaussian filter* dengan ukuran kernel yang dijaga tetap kecil (3x3) berhasil membersihkan *noise* secara signifikan tanpa membuat gambar menjadi "botak" teksturnya. Penggunaan *Unsharp Masking* sebagai pengganti *Laplacian* terbukti sangat krusial untuk menjaga tekstur wajah Lena tetap halus sambil memperjelas garis mata dan topi.
-* **Apa yang Bisa Ditingkatkan:** 1. **Komputasi Waktu:** Karena proses konvolusi dan pencarian median dilakukan secara manual menggunakan *nested loop* di Python, eksekusi program memakan waktu yang cukup lama. Optimalisasi bisa dilakukan menggunakan vektorisasi NumPy (`stride_tricks`).
-  2. **Pemulihan Warna:** Program ini merestorasi kualitas citra dalam bentuk *grayscale*. Karena citra input (`lena_noisy.png`) di-load dalam skala abu-abu, informasi saluran warna RGB asli telah hilang dan tidak dapat dipulihkan dari citra tersebut.
+* **Apa yang Berhasil (Hasil Eksperimen):** Ternyata pemilihan ukuran kernel dan urutan *filter* itu ngaruh banget. Awalnya sempat mencoba Median Filter dengan ukuran 5x5, tapi hasilnya tekstur halus (seperti pori-pori wajah dan serat topi Lena) malah ikut hilang karena terlalu *blur*. Akhirnya kernel diturunkan jadi 3x3 dan dipadukan dengan Gaussian filter ringan. 
+  
+  Untuk *sharpening*, awalnya mencoba filter Laplacian murni. Tapi karena citra dari awal sudah rusak dan di-HE (*Histogram Equalization*), Laplacian malah bikin sisa-sisa *noise* kecil makin menonjol (berbintik). Setelah tekniknya diganti menggunakan *Unsharp Masking* (mengurangkan citra asli dengan citra *blur*-nya), bagian tepi seperti mata dan garis topi bisa tajam tanpa merusak kehalusan kulit.
+
+* **Apa yang Bisa Ditingkatkan:** 1. **Running Time (Performa):** Kodenya lumayan berat dan memakan waktu saat di-*run*. Karena ada aturan larangan menggunakan fungsi *built-in* dari `cv2`, proses konvolusi dan *filtering* dilakukan murni pakai *nested loop* di Python yang secara komputasi cukup lambat. Ke depannya, ini bisa dioptimasi lagi menggunakan teknik *vectorization* atau `stride_tricks` di NumPy biar eksekusinya lebih instan.
+  2. **Batasan Grayscale:** Restorasi ini cuma mentok di *grayscale*. Karena citra input bawaannya (`lena_noisy.png`) di-*load* sebagai citra 1-*channel* (hitam putih), informasi warna asli RGB-nya sudah hilang dan nggak bisa diselamatkan lagi pakai metode *spatial filtering* biasa.
 
 ---
 
