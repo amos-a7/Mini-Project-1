@@ -6,9 +6,7 @@ Repositori ini berisi implementasi manual pengolahan citra menggunakan pustaka N
 
 ## 1. Identitas
 * **Nama:** Amos Harol Turnip
-* **NRP:** [Masukkan NRP Anda di sini]
-* **Departemen:** Teknik Komputer, Institut Teknologi Sepuluh Nopember
-
+* **NRP:** 5024241023
 ---
 
 ## 2. Penjelasan Pipeline Restorasi
