@@ -1,6 +1,6 @@
 # Mini Project 1 — Image Restoration: Lena
 
-Repositori ini berisi implementasi manual pengolahan citra menggunakan pustaka NumPy di Python untuk merestorasi citra "Lena" yang mengalami degradasi berupa *low contrast*, *Gaussian noise*, *salt-and-pepper noise*, dan *blur*. Proyek ini disusun untuk memenuhi tugas mata kuliah Pengolahan Citra dan Video.
+Repositori ini berisi implementasi manual pengolahan citra menggunakan pustaka NumPy di Python untuk merestorasi citra "Lena" yang mengalami degradasi berupa *low contrast*, *Gaussian noise*, *salt-and-pepper noise*, dan *blur*. Proyek ini untuk memenuhi tugas mata kuliah Pengolahan Citra dan Video.
 
 ---
 
