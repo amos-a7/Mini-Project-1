@@ -38,9 +38,6 @@ Berikut adalah urutan *pipeline* yang digunakan beserta alasannya:
 | :---: | :---: |
 | <img src="input/lena_noisy.png" width="300" alt="Lena Noisy"> | <img src="output/lena_restored.png" width="300" alt="Lena Restored"> |
 
-*(Catatan: Gambar input di atas merupakan versi grayscale yang sudah hilang informasi warnanya. Jika citra input tidak tampil di GitHub, pastikan path gambar di repositori sudah benar).*
-
----
 
 ## 4. Analisis Singkat
 
